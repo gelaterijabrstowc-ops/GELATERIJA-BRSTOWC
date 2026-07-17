@@ -1,9 +1,6 @@
-/* ==========================================
+/* ===============================
    GELATERIJA BRSTOWC
-   STYLE.CSS - 1. DEL
-========================================== */
-
-/* RESET */
+=============================== */
 
 *{
     margin:0;
@@ -16,375 +13,388 @@ html{
 }
 
 body{
-    font-family:'Poppins',sans-serif;
-    background:#fff8f2;
+
+    font-family:"Poppins",sans-serif;
+
+    background:#fff7ef;
+
     color:#333;
-    line-height:1.6;
-    overflow-x:hidden;
+
 }
 
-/* ==========================
-   LOADER
-========================== */
+/* NAVIGACIJA */
 
-#loader{
+.navbar{
+
     position:fixed;
-    inset:0;
-    background:white;
+
+    top:0;
+
+    left:0;
+
+    width:100%;
+
     display:flex;
-    flex-direction:column;
-    justify-content:center;
+
+    justify-content:space-between;
+
     align-items:center;
-    z-index:99999;
-}
 
-.icecream{
-    font-size:80px;
-    animation:spin 2s linear infinite;
-}
+    padding:20px 8%;
 
-@keyframes spin{
+    background:white;
 
-0%{
-transform:rotate(0deg);
-}
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
 
-100%{
-transform:rotate(360deg);
-}
-
-}
-
-/* ==========================
-   OBVESTILO
-========================== */
-
-.announcement{
-
-background:#ff4d6d;
-color:white;
-padding:10px;
-text-align:center;
-font-weight:bold;
-
-}
-
-/* ==========================
-   NAVIGACIJA
-========================== */
-
-nav{
-
-position:fixed;
-
-top:0;
-
-left:0;
-
-width:100%;
-
-display:flex;
-
-justify-content:space-between;
-
-align-items:center;
-
-padding:18px 8%;
-
-background:rgba(255,255,255,.95);
-
-backdrop-filter:blur(10px);
-
-box-shadow:0 3px 15px rgba(0,0,0,.1);
-
-z-index:999;
+    z-index:999;
 
 }
 
 .logo{
 
-font-size:28px;
+    color:#ff4d6d;
 
-font-weight:700;
+    font-size:30px;
 
-color:#ff4d6d;
-
-}
-
-nav ul{
-
-display:flex;
-
-list-style:none;
-
-gap:25px;
+    font-weight:bold;
 
 }
 
-nav ul li a{
+.nav-links{
 
-text-decoration:none;
+    display:flex;
 
-color:#333;
+    list-style:none;
 
-font-weight:600;
-
-transition:.3s;
+    gap:35px;
 
 }
 
-nav ul li a:hover{
+.nav-links a{
 
-color:#ff4d6d;
+    text-decoration:none;
 
-}
+    color:#333;
 
-#darkMode{
+    font-weight:600;
 
-width:45px;
-
-height:45px;
-
-border:none;
-
-border-radius:50%;
-
-background:#ff4d6d;
-
-color:white;
-
-font-size:20px;
-
-cursor:pointer;
-
-transition:.3s;
+    transition:.3s;
 
 }
 
-#darkMode:hover{
+.nav-links a:hover{
 
-transform:scale(1.1);
+    color:#ff4d6d;
 
 }
-
-/* ==========================
-   HAMBURGER
-========================== */
 
 .hamburger{
 
-display:none;
+    display:none;
 
-font-size:35px;
+    font-size:30px;
 
-cursor:pointer;
-
-}
-
-/* ==========================
-   HERO
-========================== */
-
-header{
-
-height:100vh;
-
-display:flex;
-
-justify-content:center;
-
-align-items:center;
-
-text-align:center;
-
-background:
-
-linear-gradient(
-
-rgba(0,0,0,.45),
-
-rgba(0,0,0,.45)
-
-),
-
-url("images/gelaterija.png")
-
-center center/cover;
-
-color:white;
-
-padding:20px;
+    cursor:pointer;
 
 }
+
+/* HERO */
 
 .hero{
 
-max-width:900px;
+    min-height:100vh;
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    align-items:center;
+
+    padding:120px 10% 60px;
+
+    gap:60px;
 
 }
 
 .hero h1{
 
-font-size:65px;
+    font-size:60px;
 
-margin-bottom:20px;
+    color:#ff4d6d;
+
+    margin-bottom:20px;
 
 }
 
 .hero p{
 
-font-size:22px;
+    font-size:20px;
 
-margin-bottom:35px;
+    margin-bottom:30px;
+
+}
+
+.hero-image img{
+
+    width:100%;
+
+    max-width:550px;
+
+}
+
+.hero-buttons{
+
+    display:flex;
+
+    gap:20px;
 
 }
 
 .btn{
 
-display:inline-block;
+    background:#ff4d6d;
 
-padding:16px 38px;
+    color:white;
 
-background:#ff4d6d;
+    text-decoration:none;
 
-color:white;
+    padding:15px 35px;
 
-text-decoration:none;
+    border-radius:40px;
 
-border-radius:40px;
-
-font-weight:bold;
-
-transition:.3s;
+    font-weight:bold;
 
 }
 
-.btn:hover{
+.btn-outline{
 
-transform:translateY(-4px);
+    border:2px solid #ff4d6d;
 
-box-shadow:0 10px 25px rgba(0,0,0,.3);
+    color:#ff4d6d;
+
+    text-decoration:none;
+
+    padding:15px 35px;
+
+    border-radius:40px;
+
+    font-weight:bold;
 
 }
 
-/* ==========================
-   ABOUT
-========================== */
+.btn:hover,
+.btn-outline:hover{
+
+    transform:translateY(-3px);
+
+}
+
+/* ABOUT */
 
 .about{
 
-padding:90px 10%;
+    padding:100px 10%;
 
-text-align:center;
+    text-align:center;
 
 }
 
 .about h2{
 
-font-size:40px;
+    color:#ff4d6d;
 
-margin-bottom:20px;
+    font-size:40px;
 
-color:#ff4d6d;
+    margin-bottom:20px;
 
 }
 
 .about p{
 
-font-size:18px;
+    max-width:900px;
 
-max-width:900px;
+    margin:auto;
 
-margin:auto;
+    font-size:18px;
 
 }
-
-.about ul{
-
-margin-top:25px;
-
-list-style:none;
-
-font-size:20px;
-
-display:grid;
-
-gap:10px;
-
-   /* ==========================================
-   GELATERIJA BRSTOWC
-   STYLE.CSS - 2. DEL
-========================================== */
 
 /* ==========================
-   SEKCIJE
+   OKUSI SLADOLEDOV
 ========================== */
 
-section{
-    padding:90px 10%;
+.flavors{
+
+    padding:100px 10%;
+
+    background:#fff;
+
 }
 
-section h2{
+.flavors h2{
+
     text-align:center;
-    font-size:40px;
-    color:#ff4d6d;
-    margin-bottom:40px;
-}
 
-/* ==========================
-   KARTICE OKUSOV
-========================== */
+    font-size:42px;
+
+    color:#ff4d6d;
+
+    margin-bottom:50px;
+
+}
 
 .cards{
+
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-    gap:30px;
+
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+
+    gap:35px;
+
 }
 
 .card{
+
     background:white;
+
     border-radius:20px;
+
     overflow:hidden;
-    box-shadow:0 10px 25px rgba(0,0,0,.12);
+
+    box-shadow:0 10px 25px rgba(0,0,0,.1);
+
     transition:.35s;
+
+    text-align:center;
+
 }
 
 .card:hover{
+
     transform:translateY(-10px);
+
 }
 
 .card img{
+
     width:100%;
-    height:240px;
+
+    height:260px;
+
     object-fit:cover;
+
 }
 
 .card h3{
-    padding:15px;
-    text-align:center;
+
+    margin-top:20px;
+
     color:#ff4d6d;
+
+    font-size:28px;
+
 }
 
 .card p{
-    padding:0 20px 20px;
-    text-align:center;
+
+    padding:15px 25px;
+
+    font-size:17px;
+
 }
 
 .card button{
-    display:block;
-    width:85%;
-    margin:20px auto;
-    padding:12px;
+
+    margin:20px;
+
+    padding:12px 30px;
+
     border:none;
-    border-radius:30px;
+
     background:#ff4d6d;
+
     color:white;
+
+    border-radius:30px;
+
     cursor:pointer;
+
+    font-size:16px;
+
     transition:.3s;
+
 }
 
 .card button:hover{
+
     background:#ff2f55;
+
+}
+
+/* ==========================
+   CENIK
+========================== */
+
+.pricing{
+
+    padding:100px 10%;
+
+    background:#fff7ef;
+
+}
+
+.pricing h2{
+
+    text-align:center;
+
+    color:#ff4d6d;
+
+    font-size:42px;
+
+    margin-bottom:45px;
+
+}
+
+.price-container{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+
+    gap:25px;
+
+}
+
+.price-card{
+
+    background:white;
+
+    border-radius:18px;
+
+    padding:35px;
+
+    text-align:center;
+
+    box-shadow:0 8px 20px rgba(0,0,0,.1);
+
+}
+
+.price-card h3{
+
+    color:#333;
+
+    margin-bottom:20px;
+
+}
+
+.price-card span{
+
+    font-size:34px;
+
+    font-weight:bold;
+
+    color:#ff4d6d;
+
 }
 
 /* ==========================
@@ -392,184 +402,214 @@ section h2{
 ========================== */
 
 .gallery{
+
+    padding:100px 10%;
+
+    background:white;
+
+}
+
+.gallery h2{
+
+    text-align:center;
+
+    font-size:42px;
+
+    color:#ff4d6d;
+
+    margin-bottom:45px;
+
+}
+
+.gallery-grid{
+
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+
     gap:20px;
+
 }
 
-.gallery img{
+.gallery-grid img{
+
     width:100%;
+
     height:240px;
+
     object-fit:cover;
-    border-radius:15px;
-    cursor:pointer;
+
+    border-radius:18px;
+
     transition:.3s;
+
+    cursor:pointer;
+
 }
 
-.gallery img:hover{
+.gallery-grid img:hover{
+
     transform:scale(1.05);
+
 }
-
-/* ==========================
-   CENIK
-========================== */
-
-table{
-    width:100%;
-    border-collapse:collapse;
-    background:white;
-    border-radius:15px;
-    overflow:hidden;
-    box-shadow:0 8px 25px rgba(0,0,0,.12);
-}
-
-th{
-    background:#ff4d6d;
-    color:white;
-}
-
-th,
-td{
-    padding:18px;
-    text-align:center;
-}
-
-tr:nth-child(even){
-    background:#f8f8f8;
-}
-
-/* ==========================
-   MNENJA
-========================== */
-
-.reviews{
-    text-align:center;
-}
-
-.review-card{
-    background:white;
-    max-width:700px;
-    margin:20px auto;
-    padding:30px;
-    border-radius:20px;
-    box-shadow:0 8px 25px rgba(0,0,0,.12);
-}
-
-.review-card p{
-    margin:15px 0;
-    font-size:18px;
-}
-
-/* ==========================
-   NAROČILO
-========================== */
-
-#narocilo{
-    text-align:center;
-}
-
-#cart{
-    max-width:600px;
-    margin:25px auto;
-    text-align:left;
-    padding-left:25px;
-}
-
-#narocilo button{
-    padding:15px 35px;
-    border:none;
-    border-radius:30px;
-    background:#ff4d6d;
-    color:white;
-    cursor:pointer;
-    transition:.3s;
-}
-
-#narocilo button:hover{
-    background:#ff2f55;
-}
-
-   /* ==========================================
-   GELATERIJA BRSTOWC
-   STYLE.CSS - 3. DEL
-========================================== */
 
 /* ==========================
    KONTAKT
 ========================== */
 
-.contact-container{
+.contact{
+
+    padding:100px 10%;
+
+    background:#fff7ef;
+
+}
+
+.contact h2{
+
+    text-align:center;
+
+    color:#ff4d6d;
+
+    font-size:42px;
+
+    margin-bottom:40px;
+
+}
+
+.contact-box{
+
     display:grid;
+
     grid-template-columns:1fr 1fr;
+
     gap:40px;
-    align-items:start;
+
 }
 
 .contact-info{
+
     background:white;
-    padding:30px;
+
+    padding:35px;
+
     border-radius:20px;
-    box-shadow:0 8px 25px rgba(0,0,0,.12);
+
+    box-shadow:0 10px 25px rgba(0,0,0,.1);
+
 }
 
 .contact-info h3{
+
     color:#ff4d6d;
+
     margin-bottom:20px;
+
 }
 
 .contact-info p{
-    margin:12px 0;
+
+    margin:15px 0;
+
+    font-size:18px;
+
 }
 
 form{
+
     background:white;
-    padding:30px;
+
+    padding:35px;
+
     border-radius:20px;
-    box-shadow:0 8px 25px rgba(0,0,0,.12);
+
+    box-shadow:0 10px 25px rgba(0,0,0,.1);
+
 }
 
 input,
 textarea{
+
     width:100%;
+
     padding:15px;
-    margin:10px 0;
+
+    margin-bottom:20px;
+
     border:1px solid #ddd;
+
     border-radius:10px;
+
     font-size:16px;
-    font-family:inherit;
+
+    font-family:Poppins,sans-serif;
+
 }
 
 textarea{
+
     resize:vertical;
-    min-height:150px;
+
 }
 
 form button{
+
     width:100%;
+
     padding:15px;
+
     border:none;
-    border-radius:30px;
+
     background:#ff4d6d;
+
     color:white;
+
+    font-size:18px;
+
+    border-radius:30px;
+
     cursor:pointer;
-    font-size:17px;
-    transition:.3s;
+
 }
 
 form button:hover{
+
     background:#ff2f55;
+
 }
 
 /* ==========================
-   GOOGLE MAPS
+   ZEMLJEVID
 ========================== */
 
-iframe{
+.map{
+
+    padding:100px 10%;
+
+    background:white;
+
+}
+
+.map h2{
+
+    text-align:center;
+
+    color:#ff4d6d;
+
+    margin-bottom:35px;
+
+}
+
+.map iframe{
+
     width:100%;
-    height:400px;
+
+    height:450px;
+
     border:none;
+
     border-radius:20px;
-    box-shadow:0 8px 25px rgba(0,0,0,.12);
+
 }
 
 /* ==========================
@@ -577,38 +617,43 @@ iframe{
 ========================== */
 
 .whatsapp{
+
     position:fixed;
+
+    bottom:25px;
+
     right:25px;
-    bottom:95px;
+
     width:65px;
+
     height:65px;
+
     background:#25D366;
+
     color:white;
+
     border-radius:50%;
+
     display:flex;
+
     justify-content:center;
+
     align-items:center;
+
     font-size:34px;
+
     text-decoration:none;
+
     box-shadow:0 8px 20px rgba(0,0,0,.25);
+
     transition:.3s;
-    z-index:999;
+
 }
 
 .whatsapp:hover{
+
     transform:scale(1.1);
-}
 
-/* ==========================
-   GUMB NAZAJ NA VRH
-========================== */
-
-#topButton{
-    transition:.3s;
-}
-
-#topButton:hover{
-    transform:scale(1.1);
 }
 
 /* ==========================
@@ -616,129 +661,83 @@ iframe{
 ========================== */
 
 footer{
+
     background:#222;
+
     color:white;
-    padding:50px 20px;
+
     text-align:center;
+
+    padding:50px 20px;
+
 }
 
-.footer-content h3{
+footer h3{
+
     color:#ff4d6d;
+
     margin-bottom:15px;
+
 }
 
-.footer-content p{
+footer p{
+
     margin:10px 0;
-}
 
-.social{
-    margin:25px 0;
-}
-
-.social a{
-    color:white;
-    font-size:28px;
-    margin:0 12px;
-    transition:.3s;
-}
-
-.social a:hover{
-    color:#ff4d6d;
-}
-
-footer hr{
-    margin:30px auto;
-    max-width:500px;
-    border:1px solid rgba(255,255,255,.15);
-}
-
-/* ==========================
-   TEMNI NAČIN
-========================== */
-
-body.dark{
-    background:#181818;
-    color:#f3f3f3;
-}
-
-body.dark nav{
-    background:#222;
-}
-
-body.dark .announcement{
-    background:#b91c3c;
-}
-
-body.dark .card,
-body.dark .review-card,
-body.dark .contact-info,
-body.dark form,
-body.dark table{
-    background:#2b2b2b;
-    color:white;
-}
-
-body.dark input,
-body.dark textarea{
-    background:#3a3a3a;
-    color:white;
-    border:1px solid #555;
-}
-
-body.dark footer{
-    background:#111;
 }
 
 /* ==========================
    MOBILNI PRIKAZ
 ========================== */
 
-@media (max-width:900px){
+@media(max-width:900px){
 
-    nav{
-        flex-wrap:wrap;
-        padding:15px 5%;
-    }
+.hero{
 
-    .hamburger{
-        display:block;
-    }
+grid-template-columns:1fr;
 
-    nav ul{
-        display:none;
-        width:100%;
-        flex-direction:column;
-        margin-top:20px;
-        gap:15px;
-        text-align:center;
-    }
+text-align:center;
 
-    .hero h1{
-        font-size:42px;
-    }
+}
 
-    .hero p{
-        font-size:18px;
-    }
+.hero h1{
 
-    .contact-container{
-        grid-template-columns:1fr;
-    }
+font-size:42px;
 
-    section{
-        padding:70px 6%;
-    }
+}
 
-    iframe{
-        height:300px;
-    }
+.hero-buttons{
 
-    .whatsapp{
-        width:55px;
-        height:55px;
-        font-size:28px;
-        bottom:85px;
-    }
+justify-content:center;
+
+flex-wrap:wrap;
+
+}
+
+.nav-links{
+
+display:none;
+
+}
+
+.hamburger{
+
+display:block;
+
+}
+
+.contact-box{
+
+grid-template-columns:1fr;
+
+}
+
+.hero-image img{
+
+max-width:350px;
+
+margin:auto;
+
 }
 
 }
