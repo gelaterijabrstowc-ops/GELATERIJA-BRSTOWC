@@ -454,6 +454,43 @@ body{
 }
 
 /* ==========================
+   TEMNI NAČIN
+========================== */
+
+body.dark{
+    background:#181818;
+    color:#f3f3f3;
+}
+
+body.dark nav{
+    background:#222;
+}
+
+body.dark .announcement{
+    background:#b91c3c;
+}
+
+body.dark .card,
+body.dark .review-card,
+body.dark .contact-info,
+body.dark form,
+body.dark table{
+    background:#2b2b2b;
+    color:white;
+}
+
+body.dark input,
+body.dark textarea{
+    background:#3a3a3a;
+    color:white;
+    border:1px solid #555;
+}
+
+body.dark footer{
+    background:#111;
+}
+
+/* ==========================
    KONTAKT
 ========================== */
 
