@@ -183,40 +183,6 @@ if (contactForm) {
    FIREBASE - MNENJA
 =========================== */
 
-// Firebase povezava
-import { initializeApp } from 
-"https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-
-import { 
-    getFirestore,
-    collection,
-    addDoc,
-    getDocs,
-    serverTimestamp,
-    query,
-    orderBy,
-    onSnapshot
-} from 
-"https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
-
-
-// TVOJI FIREBASE PODATKI
-const firebaseConfig = {
-    apiKey: "TVOJ_API_KEY",
-    authDomain: "TVOJ_PROJEKT.firebaseapp.com",
-    projectId: "TVOJ_PROJECT_ID",
-    storageBucket: "TVOJ_BUCKET",
-    messagingSenderId: "TVOJ_SENDER_ID",
-    appId: "TVOJ_APP_ID"
-};
-
-
-// Zaženi Firebase
-const app = initializeApp(firebaseConfig);
-
-
-// Firestore baza
-const db = getFirestore(app);
 
 
 
