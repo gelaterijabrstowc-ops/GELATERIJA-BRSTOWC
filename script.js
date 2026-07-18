@@ -366,19 +366,21 @@ if (reviewsContainer) {
 
         // POVPREČNA OCENA
 
-        if(averageBox && totalReviews > 0){
+if(averageBox && totalReviews > 0){
 
-            const average = (totalStars / totalReviews).toFixed(1);
+    console.log("Število mnenj:", totalReviews);
+    console.log("Zvezdice skupaj:", totalStars);
 
+    const average = (totalStars / totalReviews).toFixed(1);
 
-            averageBox.innerHTML = `
-                ⭐ ${average} / 5
-                <span>
-                    Na podlagi ${totalReviews} mnenj
-                </span>
-            `;
+    averageBox.innerHTML = `
+        ⭐ ${average} / 5
+        <span>
+            Na podlagi ${totalReviews} mnenj
+        </span>
+    `;
 
-        }
+}
 
 
     });
