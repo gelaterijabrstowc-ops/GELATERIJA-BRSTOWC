@@ -128,7 +128,7 @@ if (contactForm) {
 
             return emailjs.send(
                 "service_80s7syb",
-                "template_knv0bne",
+                "template_bm09sea",
                 data
             );
 
