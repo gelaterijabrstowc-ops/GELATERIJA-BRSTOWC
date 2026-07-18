@@ -398,6 +398,28 @@ body{
 }
 
 /* ==========================
+   MNENJA
+========================== */
+
+.reviews{
+    text-align:center;
+}
+
+.review-card{
+    background:white;
+    max-width:700px;
+    margin:20px auto;
+    padding:30px;
+    border-radius:20px;
+    box-shadow:0 8px 25px rgba(0,0,0,.12);
+}
+
+.review-card p{
+    margin:15px 0;
+    font-size:18px;
+}
+
+/* ==========================
    GALERIJA
 ========================== */
 
