@@ -290,94 +290,97 @@ sendReview.addEventListener("click", async ()=>{
 
 
 /* ===========================
-   PRIKAZ MNENJ
+   PRIKAZ MNENJ + POVPREČNA OCENA
 =========================== */
 
-
-const reviewsContainer =
-document.getElementById("reviewsContainer");
-
+const reviewsContainer = document.getElementById("reviewsContainer");
+const averageBox = document.getElementById("averageRating");
 
 
-const reviewsQuery = query(
-    collection(db,"reviews"),
-    orderBy("date","desc")
-);
+if (reviewsContainer) {
+
+    const reviewsQuery = query(
+        collection(db,"reviews"),
+        orderBy("date","desc")
+    );
 
 
-if(reviewsContainer){
-
-onSnapshot(reviewsQuery,(snapshot)=>{
+    onSnapshot(reviewsQuery,(snapshot)=>{
 
 
-    reviewsContainer.innerHTML="";
-
-    let totalStars = 0;
-let totalReviews = snapshot.size;
+        reviewsContainer.innerHTML = "";
 
 
-    snapshot.forEach((doc)=>{
+        let totalStars = 0;
+        let totalReviews = snapshot.size;
 
 
-        const review = doc.data();
-
-        totalStars += Number(review.stars);
-
-        let starsHTML="";
+        snapshot.forEach((doc)=>{
 
 
-        for(let i=0;i<review.stars;i++){
+            const review = doc.data();
 
-            starsHTML += "⭐";
+
+            totalStars += Number(review.stars);
+
+
+            let starsHTML = "";
+
+
+            for(let i=0;i<review.stars;i++){
+
+                starsHTML += "⭐";
+
+            }
+
+
+            reviewsContainer.innerHTML += `
+
+            <div class="review-card">
+
+                <h3>${review.name}</h3>
+
+                <div class="review-stars">
+                    ${starsHTML}
+                </div>
+
+                <p>
+                    ${review.text}
+                </p>
+
+                <div class="review-date">
+                    ${
+                    review.date
+                    ? review.date.toDate().toLocaleDateString()
+                    : ""
+                    }
+                </div>
+
+            </div>
+
+            `;
+
+        });
+
+
+
+        // POVPREČNA OCENA
+
+        if(averageBox && totalReviews > 0){
+
+            const average = (totalStars / totalReviews).toFixed(1);
+
+
+            averageBox.innerHTML = `
+                ⭐ ${average} / 5
+                <span>
+                    Na podlagi ${totalReviews} mnenj
+                </span>
+            `;
 
         }
 
 
-        reviewsContainer.innerHTML += `
-
-        <div class="review-card">
-
-            <h3>${review.name}</h3>
-
-            <div class="review-stars">
-                ${starsHTML}
-            </div>
-
-            <p>
-                ${review.text}
-            </p>
-
-            <div class="review-date">
-                ${
-                review.date 
-                ? review.date.toDate().toLocaleDateString()
-                : ""
-                }
-            </div>
-
-        </div>
-
-        `;
-
-        const averageBox = document.getElementById("averageRating");
-
-if(averageBox && totalReviews > 0){
-
-    const average = (totalStars / totalReviews).toFixed(1);
-
-    averageBox.innerHTML = `
-        ⭐ ${average} / 5
-        <span>
-            Na podlagi ${totalReviews} mnenj
-        </span>
-    `;
-
-}
-
     });
-
-
-});
-
 
 }
