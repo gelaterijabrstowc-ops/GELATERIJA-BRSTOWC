@@ -149,3 +149,235 @@ if (contactForm) {
     });
 
 }
+
+/* ===========================
+   FIREBASE - MNENJA
+=========================== */
+
+// Firebase povezava
+import { initializeApp } from 
+"https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
+import { 
+    getFirestore,
+    collection,
+    addDoc,
+    getDocs,
+    serverTimestamp,
+    query,
+    orderBy,
+    onSnapshot
+} from 
+"https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+
+// TVOJI FIREBASE PODATKI
+const firebaseConfig = {
+    apiKey: "TVOJ_API_KEY",
+    authDomain: "TVOJ_PROJEKT.firebaseapp.com",
+    projectId: "TVOJ_PROJECT_ID",
+    storageBucket: "TVOJ_BUCKET",
+    messagingSenderId: "TVOJ_SENDER_ID",
+    appId: "TVOJ_APP_ID"
+};
+
+
+// Zaženi Firebase
+const app = initializeApp(firebaseConfig);
+
+
+// Firestore baza
+const db = getFirestore(app);
+
+
+
+/* ===========================
+   ZVEZDICE
+=========================== */
+
+let selectedStars = 0;
+
+const stars = document.querySelectorAll(".star");
+
+
+stars.forEach((star)=>{
+
+    star.addEventListener("click",()=>{
+
+        selectedStars = star.dataset.value;
+
+        stars.forEach((s)=>{
+
+            if(s.dataset.value <= selectedStars){
+                s.classList.add("active");
+            }
+            else{
+                s.classList.remove("active");
+            }
+
+        });
+
+    });
+
+});
+
+
+
+/* ===========================
+   SHRANI MNENJE
+=========================== */
+
+const sendReview = document.getElementById("sendReview");
+
+
+sendReview.addEventListener("click", async ()=>{
+
+
+    const name = document.getElementById("reviewName").value;
+
+    const text = document.getElementById("reviewText").value;
+
+
+
+    if(name === "" || text === "" || selectedStars === 0){
+
+        alert("Prosimo izpolni vse podatke in izberi zvezdice.");
+
+        return;
+
+    }
+
+
+
+    try{
+
+
+        await addDoc(collection(db,"reviews"),{
+
+
+            name:name,
+
+            text:text,
+
+            stars:selectedStars,
+
+            date:serverTimestamp()
+
+
+        });
+
+
+
+        alert("Hvala za tvoje mnenje! ❤️");
+
+
+
+        document.getElementById("reviewName").value="";
+        document.getElementById("reviewText").value="";
+
+
+        selectedStars=0;
+
+
+        stars.forEach(s=>{
+            s.classList.remove("active");
+        });
+
+
+    }
+
+
+    catch(error){
+
+        console.log(error);
+
+        alert("Napaka pri shranjevanju.");
+
+    }
+
+
+});
+
+
+
+
+
+/* ===========================
+   PRIKAZ MNENJ
+=========================== */
+
+
+const reviewsContainer =
+document.getElementById("reviewsContainer");
+
+
+
+const reviewsQuery = query(
+    collection(db,"reviews"),
+    orderBy("date","desc")
+);
+
+
+
+onSnapshot(reviewsQuery,(snapshot)=>{
+
+
+    reviewsContainer.innerHTML="";
+
+
+
+    snapshot.forEach((doc)=>{
+
+
+        const review = doc.data();
+
+
+
+        let starsHTML="";
+
+
+        for(let i=0;i<review.stars;i++){
+
+            starsHTML += "⭐";
+
+        }
+
+
+
+        reviewsContainer.innerHTML += `
+
+
+        <div class="review-card">
+
+
+            <h3>${review.name}</h3>
+
+
+            <div class="review-stars">
+                ${starsHTML}
+            </div>
+
+
+            <p>
+                ${review.text}
+            </p>
+
+
+            <div class="review-date">
+                ${review.date ? 
+                review.date.toDate().toLocaleDateString()
+                :
+                ""}
+            </div>
+
+
+        </div>
+
+
+        `;
+
+
+    });
+
+
+});
