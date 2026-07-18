@@ -293,6 +293,8 @@ sendReview.addEventListener("click", async ()=>{
    PRIKAZ MNENJ + POVPREČNA OCENA
 =========================== */
 
+console.log("⭐ Firebase prikaz mnenj se je zagnal");
+
 const reviewsContainer = document.getElementById("reviewsContainer");
 const averageBox = document.getElementById("averageRating");
 
