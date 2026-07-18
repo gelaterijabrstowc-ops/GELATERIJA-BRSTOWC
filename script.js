@@ -118,21 +118,31 @@ if (contactForm) {
             "service_80s7syb",
             "template_6xszds6",
             this
-        )
+        ).then(() => {
 
-        .then(() => {
+            const data = {
+                ime: contactForm.ime.value,
+                email: contactForm.email.value,
+                sporocilo: contactForm.sporocilo.value
+            };
 
-            alert("🍦 Hvala! Sporočilo je bilo uspešno poslano.");
+            return emailjs.send(
+                "service_80s7syb",
+                "template_knv0bne",
+                data
+            );
+
+        }).then(() => {
+
+            alert("🍦 Hvala! Vaše sporočilo je bilo uspešno poslano.");
 
             contactForm.reset();
 
-        })
-
-        .catch((error) => {
+        }).catch((error) => {
 
             console.error(error);
 
-            alert("❌ Prišlo je do napake. Poskusite znova.");
+            alert("❌ Prišlo je do napake pri pošiljanju.");
 
         });
 
