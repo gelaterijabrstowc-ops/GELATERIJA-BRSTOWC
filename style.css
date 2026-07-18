@@ -984,3 +984,22 @@ margin:auto;
     }
 
 }
+
+/* ===========================
+   POVPREČNA OCENA
+=========================== */
+
+#averageRating{
+    margin:25px auto 40px;
+    font-size:24px;
+    font-weight:600;
+    color:#ff4d6d;
+}
+
+#averageRating span{
+    display:block;
+    font-size:16px;
+    color:#777;
+    margin-top:8px;
+    font-weight:400;
+}
