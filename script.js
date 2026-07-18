@@ -101,3 +101,41 @@ if (darkModeButton) {
     });
 
 }
+
+// ==========================
+// EMAILJS
+// ==========================
+
+const contactForm = document.getElementById("contact-form");
+
+if (contactForm) {
+
+    contactForm.addEventListener("submit", function(e){
+
+        e.preventDefault();
+
+        emailjs.sendForm(
+            "service_80s7syb",
+            "template_6xszds6",
+            this
+        )
+
+        .then(() => {
+
+            alert("🍦 Hvala! Sporočilo je bilo uspešno poslano.");
+
+            contactForm.reset();
+
+        })
+
+        .catch((error) => {
+
+            console.error(error);
+
+            alert("❌ Prišlo je do napake. Poskusite znova.");
+
+        });
+
+    });
+
+}
