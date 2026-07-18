@@ -42,19 +42,6 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
     });
 });
 
-// Kontaktni obrazec
-const form = document.querySelector("form");
-
-if (form) {
-    form.addEventListener("submit", function (e) {
-
-        alert("Hvala za vaše sporočilo! 🍦");
-
-        form.reset();
-
-    });
-}
-
 // Animacija kartic
 const cards = document.querySelectorAll(".card");
 
