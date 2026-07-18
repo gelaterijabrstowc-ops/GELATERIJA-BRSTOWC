@@ -305,21 +305,18 @@ const reviewsQuery = query(
 );
 
 
-
 if(reviewsContainer){
 
-onSnapshot(reviewsQuery,(snapshot)=>{ }
+onSnapshot(reviewsQuery,(snapshot)=>{
 
 
     reviewsContainer.innerHTML="";
-
 
 
     snapshot.forEach((doc)=>{
 
 
         const review = doc.data();
-
 
 
         let starsHTML="";
@@ -332,36 +329,29 @@ onSnapshot(reviewsQuery,(snapshot)=>{ }
         }
 
 
-
         reviewsContainer.innerHTML += `
-
 
         <div class="review-card">
 
-
             <h3>${review.name}</h3>
-
 
             <div class="review-stars">
                 ${starsHTML}
             </div>
 
-
             <p>
                 ${review.text}
             </p>
 
-
             <div class="review-date">
-                ${review.date ? 
-                review.date.toDate().toLocaleDateString()
-                :
-                ""}
+                ${
+                review.date 
+                ? review.date.toDate().toLocaleDateString()
+                : ""
+                }
             </div>
 
-
         </div>
-
 
         `;
 
@@ -370,3 +360,6 @@ onSnapshot(reviewsQuery,(snapshot)=>{ }
 
 
 });
+
+
+}
