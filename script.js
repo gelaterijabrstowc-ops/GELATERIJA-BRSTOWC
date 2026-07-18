@@ -3,6 +3,35 @@
 // script.js
 // ===============================
 
+import { initializeApp } from 
+"https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
+import { 
+    getFirestore,
+    collection,
+    addDoc,
+    serverTimestamp,
+    query,
+    orderBy,
+    onSnapshot
+} from 
+"https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyAuENCfSQwwdO2X1TJSeeFMamPhY1UjQDY",
+  authDomain: "gelaterija-brstowc.firebaseapp.com",
+  projectId: "gelaterija-brstowc",
+  storageBucket: "gelaterija-brstowc.firebasestorage.app",
+  messagingSenderId: "827480583451",
+  appId: "1:827480583451:web:b4317fdf62aa0f024b37be"
+};
+
+
+const app = initializeApp(firebaseConfig);
+
+const db = getFirestore(app);
+
+
 // Mobilni meni
 const hamburger = document.querySelector(".hamburger");
 const navLinks = document.querySelector(".nav-links");
