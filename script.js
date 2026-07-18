@@ -312,12 +312,16 @@ onSnapshot(reviewsQuery,(snapshot)=>{
 
     reviewsContainer.innerHTML="";
 
+    let totalStars = 0;
+let totalReviews = snapshot.size;
+
 
     snapshot.forEach((doc)=>{
 
 
         const review = doc.data();
 
+        totalStars += Number(review.stars);
 
         let starsHTML="";
 
@@ -355,6 +359,20 @@ onSnapshot(reviewsQuery,(snapshot)=>{
 
         `;
 
+        const averageBox = document.getElementById("averageRating");
+
+if(averageBox && totalReviews > 0){
+
+    const average = (totalStars / totalReviews).toFixed(1);
+
+    averageBox.innerHTML = `
+        ⭐ ${average} / 5
+        <span>
+            Na podlagi ${totalReviews} mnenj
+        </span>
+    `;
+
+}
 
     });
 
