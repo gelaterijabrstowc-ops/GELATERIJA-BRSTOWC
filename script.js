@@ -17,6 +17,7 @@ import {
 } from 
 "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
+
 const firebaseConfig = {
   apiKey: "AIzaSyAuENCfSQwwdO2X1TJSeeFMamPhY1UjQDY",
   authDomain: "gelaterija-brstowc.firebaseapp.com",
@@ -30,7 +31,6 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 
 const db = getFirestore(app);
-
 
 // Mobilni meni
 const hamburger = document.querySelector(".hamburger");
