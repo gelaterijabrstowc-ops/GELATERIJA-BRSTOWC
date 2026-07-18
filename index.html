@@ -360,30 +360,27 @@ Izbirate lahko med klasičnimi in sadnimi okusi.
 
 <form id="contact-form">
 
-    <input type="hidden" name="_captcha" value="false">
-    <input type="hidden" name="_template" value="table">
+<input
+type="text"
+name="ime"
+placeholder="Vaše ime"
+required>
 
-    <input
-        type="text"
-        name="ime"
-        placeholder="Vaše ime"
-        required>
+<input
+type="email"
+name="email"
+placeholder="Vaš e-poštni naslov"
+required>
 
-    <input
-        type="email"
-        name="email"
-        placeholder="Vaš e-poštni naslov"
-        required>
+<textarea
+name="sporocilo"
+rows="6"
+placeholder="Vaše sporočilo"
+required></textarea>
 
-    <textarea
-        name="sporocilo"
-        placeholder="Vaše sporočilo"
-        rows="6"
-        required></textarea>
-
-    <input type="hidden" name="_subject" value="Novo sporočilo - Gelaterija Brstowc">
-
-    <button type="submit">Pošlji</button>
+<button type="submit">
+Pošlji
+</button>
 
 </form>
 
