@@ -225,13 +225,13 @@ stars.forEach((star)=>{
 const sendReview = document.getElementById("sendReview");
 
 
-sendReview.addEventListener("click", async ()=>{
+if(sendReview){
 
+sendReview.addEventListener("click", async ()=>{
 
     const name = document.getElementById("reviewName").value;
 
     const text = document.getElementById("reviewText").value;
-
 
 
     if(name === "" || text === "" || selectedStars === 0){
@@ -243,28 +243,19 @@ sendReview.addEventListener("click", async ()=>{
     }
 
 
-
     try{
-
 
         await addDoc(collection(db,"reviews"),{
 
-
             name:name,
-
             text:text,
-
-            stars:selectedStars,
-
+            stars:Number(selectedStars),
             date:serverTimestamp()
-
 
         });
 
 
-
         alert("Hvala za tvoje mnenje! ❤️");
-
 
 
         document.getElementById("reviewName").value="";
@@ -281,7 +272,6 @@ sendReview.addEventListener("click", async ()=>{
 
     }
 
-
     catch(error){
 
         console.log(error);
@@ -292,6 +282,8 @@ sendReview.addEventListener("click", async ()=>{
 
 
 });
+
+}
 
 
 
@@ -314,7 +306,9 @@ const reviewsQuery = query(
 
 
 
-onSnapshot(reviewsQuery,(snapshot)=>{
+if(reviewsContainer){
+
+onSnapshot(reviewsQuery,(snapshot)=>{ }
 
 
     reviewsContainer.innerHTML="";
