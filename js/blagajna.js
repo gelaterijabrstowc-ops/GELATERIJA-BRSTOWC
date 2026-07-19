@@ -41,12 +41,39 @@ let currentUser = null;
 
 // prijavljen uporabnik
 
-onAuthStateChanged(auth,(user)=>{
+onAuthStateChanged(auth, async (user)=>{
 
     currentUser = user;
 
-});
 
+    if(user){
+
+        const userDoc =
+        await getDoc(
+            doc(db,"users",user.uid)
+        );
+
+
+        if(userDoc.exists()){
+
+
+            const data =
+            userDoc.data();
+
+
+            document.getElementById("customerName").value =
+            data.ime;
+
+
+            document.getElementById("customerEmail").value =
+            data.email;
+
+
+        }
+
+    }
+
+});
 
 
 
