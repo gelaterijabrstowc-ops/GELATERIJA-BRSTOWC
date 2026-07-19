@@ -1,19 +1,7 @@
 // ==========================================
 // GELATERIJA BRSTOWC
-// ADMIN - NAROČILA
+// ADMIN
 // ==========================================
-
-import {
-    ref,
-    uploadBytes,
-    getDownloadURL
-} from "https://www.gstatic.com/firebasejs/12.0.0/firebase-storage.js";
-
-import {
-    addDoc
-} from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
-
-import { storage } from "./firebase.js";
 
 import { auth, db } from "./firebase.js";
 
@@ -22,201 +10,121 @@ import {
 } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
 
 import {
-    doc,
-    getDoc
-} from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
-
-import {
     collection,
     getDocs,
     orderBy,
-    query
+    query,
+    doc,
+    getDoc,
+    addDoc
 } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
 
+const adminOrders = document.getElementById("adminOrders");
 
+// ==========================================
+// NALOŽI NAROČILA
+// ==========================================
 
-const adminOrders =
-document.getElementById("adminOrders");
+async function loadOrders() {
 
+    if (!adminOrders) return;
 
-
-
-async function loadOrders(){
-
-
-    if(!adminOrders) return;
-
-
-
-    try{
-
+    try {
 
         const q = query(
-
-            collection(db,"orders"),
-
-            orderBy(
-                "createdAt",
-                "desc"
-            )
-
+            collection(db, "orders"),
+            orderBy("createdAt", "desc")
         );
 
+        const snapshot = await getDocs(q);
 
+        adminOrders.innerHTML = "";
 
-        const snapshot =
-        await getDocs(q);
+        if (snapshot.empty) {
 
-
-
-        adminOrders.innerHTML="";
-
-
-
-        if(snapshot.empty){
-
-
-            adminOrders.innerHTML =
-            "<p>Ni naročil.</p>";
-
-
+            adminOrders.innerHTML = "<p>Ni naročil.</p>";
             return;
 
         }
 
+        snapshot.forEach((orderDoc) => {
 
-
-        snapshot.forEach((doc)=>{
-
-
-            const order =
-            doc.data();
-
-
+            const order = orderDoc.data();
 
             adminOrders.innerHTML += `
 
+                <div class="admin-order">
 
-            <div class="admin-order">
+                    <h3>📦 Naročilo</h3>
 
+                    <p>👤 ${order.customerName}</p>
 
-                <h3>
-                📦 Naročilo
-                </h3>
+                    <p>📞 ${order.phone}</p>
 
+                    <p>📍 ${order.address}</p>
 
-                <p>
-                👤 ${order.customerName}
-                </p>
+                    <p>
+                    🍦
+                    ${order.products.map(
+                        item => item.name + " x" + item.quantity
+                    ).join(", ")}
+                    </p>
 
+                    <p>
+                    💰 ${order.total.toFixed(2)} €
+                    </p>
 
-                <p>
-                📞 ${order.phone}
-                </p>
-
-
-                <p>
-                📍 ${order.address}
-                </p>
-
-
-
-                <p>
-                🍦
-
-                ${order.products.map(
-
-                    item =>
-
-                    item.name +
-                    " x" +
-                    item.quantity
-
-                ).join(", ")}
-
-                </p>
-
-
-
-                <p>
-                💰
-
-                ${order.total.toFixed(2)} €
-
-                </p>
-
-
-            </div>
-
+                </div>
 
             `;
 
-
         });
 
+    } catch (error) {
 
-
-    }
-    catch(error){
-
-
-        console.error(
-            "Napaka pri nalaganju naročil:",
-            error
-        );
-
+        console.error(error);
 
     }
-
 
 }
 
-onAuthStateChanged(auth, async (user)=>{
+// ==========================================
+// PREVERI ADMINA
+// ==========================================
 
+onAuthStateChanged(auth, async (user) => {
 
-    if(!user){
+    if (!user) {
 
-        alert("Dostop zavrnjen.");
-
-        window.location.href="racun.html";
-
+        window.location.href = "racun.html";
         return;
 
     }
-
-
 
     const userDoc = await getDoc(
-        doc(db,"users",user.uid)
+        doc(db, "users", user.uid)
     );
 
-
-
-    if(
+    if (
         !userDoc.exists() ||
         userDoc.data().role !== "admin"
-    ){
+    ) {
 
-        alert("Nimaš dovoljenja za admin stran.");
-
-        window.location.href="index.html";
-
+        window.location.href = "index.html";
         return;
 
     }
 
-
-
     loadOrders();
-
 
 });
 
 // ==========================================
-// DODAJ NOV OKUS
+// DODAJ OKUS
 // ==========================================
 
-const addFlavorForm = document.getElementById("addFlavorForm");
+const addFlavorForm =
+document.getElementById("addFlavorForm");
 
 if (addFlavorForm) {
 
@@ -226,43 +134,30 @@ if (addFlavorForm) {
 
         try {
 
-            const name = document.getElementById("flavorName").value;
-            const description = document.getElementById("flavorDescription").value;
-            const price = Number(document.getElementById("flavorPrice").value);
+            const name =
+                document.getElementById("flavorName").value;
+
+            const description =
+                document.getElementById("flavorDescription").value;
+
+            const price =
+                Number(document.getElementById("flavorPrice").value);
 
             const available =
                 document.getElementById("flavorAvailable").checked;
 
-            const file =
-                document.getElementById("flavorImage").files[0];
+            const imageName =
+                document.getElementById("flavorImage").value.trim();
 
-            if (!file) {
-
-                alert("Izberi sliko.");
-                return;
-
-            }
-
-            // Upload slike
-
-            const imageRef = ref(
-                storage,
-                `flavors/${Date.now()}_${file.name}`
-            );
-
-            await uploadBytes(imageRef, file);
-
-            const imageUrl =
-                await getDownloadURL(imageRef);
-
-            // Shrani okus
+            const image =
+                "images/" + imageName;
 
             await addDoc(collection(db, "flavors"), {
 
                 name,
                 description,
                 price,
-                image: imageUrl,
+                image,
                 available,
                 createdAt: new Date()
 
@@ -283,9 +178,3 @@ if (addFlavorForm) {
     });
 
 }
-
-const imageName =
-document.getElementById("flavorImage").value.trim();
-
-const imageUrl =
-"images/" + imageName;
