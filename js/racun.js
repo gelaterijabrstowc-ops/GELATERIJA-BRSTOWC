@@ -29,6 +29,9 @@ const logoutButton = document.getElementById("logoutButton");
 onAuthStateChanged(auth, async (user) => {
 
     console.log(user);
+    
+    loadOrders(user);
+
 
     if (user) {
 
