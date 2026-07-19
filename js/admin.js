@@ -152,16 +152,16 @@ if (addFlavorForm) {
             const image =
                 "images/" + imageName;
 
-            await addDoc(collection(db, "flavors"), {
+await addDoc(collection(db, "products"), {
 
-                name,
-                description,
-                price,
-                image,
-                available,
-                createdAt: new Date()
+    name,
+    description,
+    price,
+    image,
+    available,
+    category: "sadni"
 
-            });
+});
 
             alert("✅ Okus uspešno dodan!");
 
