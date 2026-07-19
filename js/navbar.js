@@ -69,3 +69,25 @@ if (hamburger && navLinks) {
     });
 
 }
+
+// ---------- ADMIN GUMB ----------
+
+const adminLink = document.getElementById("adminLink");
+
+if (adminLink) {
+
+    onAuthStateChanged(auth, async (user) => {
+
+        if (!user) return;
+
+        const snap = await getDoc(doc(db, "users", user.uid));
+
+        if (snap.exists() && snap.data().role === "admin") {
+
+            adminLink.style.display = "block";
+
+        }
+
+    });
+
+}
