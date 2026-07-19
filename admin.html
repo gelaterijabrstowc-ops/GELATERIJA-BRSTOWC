@@ -44,6 +44,59 @@ Domov
 📦 Vsa naročila
 </h1>
 
+  <hr>
+
+<section class="admin-flavors">
+
+<h2>🍦 Dodaj nov okus</h2>
+
+<form id="addFlavorForm">
+
+<input
+type="text"
+id="flavorName"
+placeholder="Ime okusa"
+required>
+
+<textarea
+id="flavorDescription"
+placeholder="Opis okusa"
+required></textarea>
+
+<input
+type="number"
+id="flavorPrice"
+placeholder="Cena (€)"
+step="0.01"
+required>
+
+<input
+type="file"
+id="flavorImage"
+accept="image/*"
+required>
+
+<label>
+
+<input
+type="checkbox"
+id="flavorAvailable"
+checked>
+
+Na voljo
+
+</label>
+
+<button type="submit">
+
+➕ Dodaj okus
+
+</button>
+
+</form>
+
+</section>
+
 
 <div id="adminOrders">
 
