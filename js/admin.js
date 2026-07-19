@@ -3,6 +3,18 @@
 // ADMIN - NAROČILA
 // ==========================================
 
+import {
+    ref,
+    uploadBytes,
+    getDownloadURL
+} from "https://www.gstatic.com/firebasejs/12.0.0/firebase-storage.js";
+
+import {
+    addDoc
+} from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
+
+import { storage } from "./firebase.js";
+
 import { auth, db } from "./firebase.js";
 
 import {
@@ -199,3 +211,75 @@ onAuthStateChanged(auth, async (user)=>{
 
 
 });
+
+// ==========================================
+// DODAJ NOV OKUS
+// ==========================================
+
+const addFlavorForm = document.getElementById("addFlavorForm");
+
+if (addFlavorForm) {
+
+    addFlavorForm.addEventListener("submit", async (e) => {
+
+        e.preventDefault();
+
+        try {
+
+            const name = document.getElementById("flavorName").value;
+            const description = document.getElementById("flavorDescription").value;
+            const price = Number(document.getElementById("flavorPrice").value);
+
+            const available =
+                document.getElementById("flavorAvailable").checked;
+
+            const file =
+                document.getElementById("flavorImage").files[0];
+
+            if (!file) {
+
+                alert("Izberi sliko.");
+                return;
+
+            }
+
+            // Upload slike
+
+            const imageRef = ref(
+                storage,
+                `flavors/${Date.now()}_${file.name}`
+            );
+
+            await uploadBytes(imageRef, file);
+
+            const imageUrl =
+                await getDownloadURL(imageRef);
+
+            // Shrani okus
+
+            await addDoc(collection(db, "flavors"), {
+
+                name,
+                description,
+                price,
+                image: imageUrl,
+                available,
+                createdAt: new Date()
+
+            });
+
+            alert("✅ Okus uspešno dodan!");
+
+            addFlavorForm.reset();
+
+        } catch (error) {
+
+            console.error(error);
+
+            alert("Napaka pri dodajanju okusa.");
+
+        }
+
+    });
+
+}
