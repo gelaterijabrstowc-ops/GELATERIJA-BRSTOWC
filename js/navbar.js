@@ -70,7 +70,7 @@ if (hamburger && navLinks) {
 
 }
 
-// ---------- ADMIN GUMB ----------
+// ---------- ADMIN ----------
 
 const adminLink = document.getElementById("adminLink");
 
@@ -78,13 +78,22 @@ if (adminLink) {
 
     onAuthStateChanged(auth, async (user) => {
 
-        if (!user) return;
+        if (!user) {
+
+            adminLink.style.display = "none";
+            return;
+
+        }
 
         const snap = await getDoc(doc(db, "users", user.uid));
 
         if (snap.exists() && snap.data().role === "admin") {
 
             adminLink.style.display = "block";
+
+        } else {
+
+            adminLink.style.display = "none";
 
         }
 
