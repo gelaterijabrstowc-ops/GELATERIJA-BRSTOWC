@@ -1,11 +1,11 @@
 // ==========================================
 // GELATERIJA BRSTOWC
-// OKUSI - FIRESTORE
+// OKUSI
 // ==========================================
 
-import { addToCart } from "./kosarica.js";
-
 import { db } from "./firebase.js";
+
+import { addToCart } from "./kosarica.js";
 
 import {
     collection,
@@ -15,24 +15,25 @@ import {
 } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
 
 
-// Element kjer se prikažejo izdelki
-
 const productsContainer = document.getElementById("productsContainer");
 
 
-// Naloži izdelke
-
-async function loadProducts() {
-
-    if (!productsContainer) return;
+let products = [];
 
 
-    try {
+// Nalaganje izdelkov
+
+async function loadProducts(){
+
+    if(!productsContainer) return;
+
+
+    try{
 
 
         const productsQuery = query(
-            collection(db, "products"),
-            where("available", "==", true)
+            collection(db,"products"),
+            where("available","==",true)
         );
 
 
@@ -42,32 +43,31 @@ async function loadProducts() {
         productsContainer.innerHTML = "";
 
 
-        if (snapshot.empty) {
-
-            productsContainer.innerHTML = 
-            "<p>Trenutno ni izdelkov.</p>";
-
-            return;
-
-        }
+        products = [];
 
 
-
-        snapshot.forEach((doc) => {
-
-
-            const product = doc.data();
+        snapshot.forEach((doc)=>{
 
 
-            const card = document.createElement("div");
+            const product = {
 
-            card.className = "product-card";
+                id: doc.id,
+                ...doc.data()
+
+            };
 
 
-            card.innerHTML = `
+            products.push(product);
+
+
+
+            productsContainer.innerHTML += `
+
+            <div class="product-card">
+
 
                 <img 
-                src="${product.image}" 
+                src="${product.image}"
                 alt="${product.name}">
 
 
@@ -90,13 +90,13 @@ async function loadProducts() {
 
 
                     <div class="product-price">
-                    ${product.price.toFixed(2)} €
+                    ${Number(product.price).toFixed(2)} €
                     </div>
 
 
                     <button 
                     class="add-cart"
-                    data-id="${doc.id}">
+                    data-id="${product.id}">
 
                     🛒 Dodaj v košarico
 
@@ -105,20 +105,42 @@ async function loadProducts() {
 
                 </div>
 
+
+            </div>
+
             `;
-
-
-            productsContainer.appendChild(card);
 
 
         });
 
 
 
-        function addCartEvents(){
+        addCartEvents();
+
+
+
+    }
+    catch(error){
+
+        console.error(
+            "Napaka pri nalaganju okusov:",
+            error
+        );
+
+    }
+
+}
+
+
+
+// Gumbi košarice
+
+function addCartEvents(){
+
 
     const buttons =
     document.querySelectorAll(".add-cart");
+
 
 
     buttons.forEach(button=>{
@@ -131,61 +153,19 @@ async function loadProducts() {
             button.dataset.id;
 
 
+
             const product =
             products.find(
-                p => p.id === id
+                item => item.id === id
             );
 
 
-            addToCart(product);
 
+            if(product){
 
-        });
+                addToCart(product);
 
-
-    });
-
-}
-
-
-
-    } catch(error) {
-
-
-        console.error(
-            "Napaka pri nalaganju izdelkov:",
-            error
-        );
-
-
-    }
-
-
-}
-
-
-
-// Začasna funkcija za gumb košarice
-
-function addCartEvents(){
-
-
-    const buttons =
-    document.querySelectorAll(".add-cart");
-
-
-    buttons.forEach(button => {
-
-
-        button.addEventListener("click",()=>{
-
-
-            const id = button.dataset.id;
-
-
-            alert(
-                "Izdelek dodan v košarico: " + id
-            );
+            }
 
 
         });
