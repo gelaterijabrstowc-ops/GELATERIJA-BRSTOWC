@@ -63,6 +63,8 @@ id="flavorDescription"
 placeholder="Opis okusa"
 required></textarea>
 
+<div class="form-row">
+
 <input
 type="number"
 id="flavorPrice"
@@ -72,13 +74,15 @@ required>
 
 <select id="flavorCategory" required>
 
-<option value="sadni">Sadni</option>
-<option value="kremni">Kremni</option>
-<option value="čokoladni">Čokoladni</option>
-<option value="veganski">Veganski</option>
-<option value="posebni">Posebni</option>
+<option value="sadni">🍓 Sadni</option>
+<option value="kremni">🥛 Kremni</option>
+<option value="čokoladni">🍫 Čokoladni</option>
+<option value="veganski">🌱 Veganski</option>
+<option value="posebni">⭐ Posebni</option>
 
 </select>
+
+</div>
 
 <input
 type="text"
@@ -86,14 +90,14 @@ id="flavorImage"
 placeholder="Ime slike (npr. sladoled_jagoda.png)"
 required>
 
-<label>
+<label class="checkbox-row">
 
 <input
 type="checkbox"
 id="flavorAvailable"
 checked>
 
-Na voljo
+Na voljo za prodajo
 
 </label>
 
