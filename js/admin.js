@@ -146,6 +146,9 @@ if (addFlavorForm) {
             const available =
                 document.getElementById("flavorAvailable").checked;
 
+            const category =
+    document.getElementById("flavorCategory").value;
+
             const imageName =
                 document.getElementById("flavorImage").value.trim();
 
@@ -159,7 +162,7 @@ await addDoc(collection(db, "products"), {
     price,
     image,
     available,
-    category: "sadni"
+    category
 
 });
 
