@@ -1,1 +1,203 @@
+<!DOCTYPE html>
+<html lang="sl">
 
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Moj račun | Gelaterija Brstowc</title>
+
+    <link rel="icon" type="image/png" href="images/gelaterija.png">
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/racun.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+</head>
+
+<body>
+
+<header>
+
+<nav class="navbar">
+
+<h2 class="logo">
+🍦 Gelaterija Brstowc
+</h2>
+
+<ul class="nav-links">
+
+<li><a href="index.html">Domov</a></li>
+
+<li><a href="okusi.html">Okusi</a></li>
+
+<li><a href="kosarica.html">Košarica</a></li>
+
+<li><a href="racun.html">Moj račun</a></li>
+
+</ul>
+
+<div class="nav-buttons">
+
+<button id="darkMode">
+🌙
+</button>
+
+</div>
+
+</nav>
+
+</header>
+
+<main>
+
+<section class="account">
+
+<h1>Moj račun</h1>
+
+<div class="account-container">
+
+<!-- PRIJAVA -->
+
+<div class="login-box">
+
+<h2>Prijava</h2>
+
+<form id="loginForm">
+
+<input
+type="email"
+id="loginEmail"
+placeholder="E-pošta"
+required>
+
+<input
+type="password"
+id="loginPassword"
+placeholder="Geslo"
+required>
+
+<button type="submit">
+
+Prijava
+
+</button>
+
+</form>
+
+</div>
+
+<!-- REGISTRACIJA -->
+
+<div class="register-box">
+
+<h2>Registracija</h2>
+
+<form id="registerForm">
+
+<input
+type="text"
+id="registerName"
+placeholder="Ime in priimek"
+required>
+
+<input
+type="email"
+id="registerEmail"
+placeholder="E-pošta"
+required>
+
+<input
+type="password"
+id="registerPassword"
+placeholder="Geslo"
+required>
+
+<input
+type="password"
+id="registerPassword2"
+placeholder="Ponovi geslo"
+required>
+
+<button type="submit">
+
+Ustvari račun
+
+</button>
+
+</form>
+
+</div>
+
+</div>
+
+<!-- PO PRIJAVI -->
+
+<section id="userPanel" style="display:none;">
+
+<h2>Dobrodošli!</h2>
+
+<p id="userName"></p>
+
+<p id="userEmail"></p>
+
+<div class="account-buttons">
+
+<a href="kosarica.html" class="btn">
+
+Moja košarica
+
+</a>
+
+<a href="blagajna.html" class="btn">
+
+Moja naročila
+
+</a>
+
+<button id="logoutButton">
+
+Odjava
+
+</button>
+
+</div>
+
+</section>
+
+</section>
+
+</main>
+
+<footer>
+
+<p>
+
+© 2026 Gelaterija Brstowc
+
+</p>
+
+<p>
+
+To je učni projekt.
+
+</p>
+
+</footer>
+
+<script type="module" src="js/firebase.js"></script>
+<script type="module" src="js/navbar.js"></script>
+<script type="module" src="js/auth.js"></script>
+<script type="module" src="js/racun.js"></script>
+
+</body>
+
+</html>
