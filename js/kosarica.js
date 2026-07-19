@@ -42,32 +42,27 @@ export function addToCart(product){
 
         existing.quantity++;
 
-    } else {
-
+    } 
+    else {
 
         cart.push({
 
             id: product.id,
             name: product.name,
-            price: product.price,
+            price: Number(product.price),
             image: product.image,
-            quantity:1
+            quantity: 1
 
         });
-
 
     }
 
 
     saveCart(cart);
 
-
     updateCartCount();
 
-
-    alert(
-        product.name + " je dodan v košarico"
-    );
+    alert(product.name + " je dodan v košarico");
 
 }
 
@@ -88,24 +83,23 @@ export function updateCartCount(){
     const cart = getCart();
 
 
-    let total = 0;
+    let count = 0;
 
 
     cart.forEach(item=>{
 
-        total += item.quantity;
+        count += item.quantity;
 
     });
 
 
-    cartCount.textContent = total;
-
+    cartCount.textContent = count;
 
 }
 
 
 
-// Prikaži košarico
+// Prikaz košarice
 
 export function loadCart(){
 
@@ -124,7 +118,7 @@ export function loadCart(){
     const cart = getCart();
 
 
-    container.innerHTML="";
+    container.innerHTML = "";
 
 
     let total = 0;
@@ -136,8 +130,7 @@ export function loadCart(){
         container.innerHTML =
         "<p>Košarica je prazna.</p>";
 
-        totalElement.textContent =
-        "0 €";
+        totalElement.textContent="0 €";
 
         return;
 
@@ -154,6 +147,7 @@ export function loadCart(){
 
         container.innerHTML += `
 
+
         <div class="cart-item">
 
 
@@ -162,22 +156,58 @@ export function loadCart(){
 
             <div>
 
-                <h3>${item.name}</h3>
+
+                <h3>
+                ${item.name}
+                </h3>
+
 
                 <p>
+                Cena:
                 ${item.price.toFixed(2)} €
                 </p>
 
 
-                <p>
-                Količina: ${item.quantity}
-                </p>
+                <div class="quantity">
+
+
+                    <button 
+                    class="minus"
+                    data-id="${item.id}">
+                    -
+                    </button>
+
+
+                    <span>
+                    ${item.quantity}
+                    </span>
+
+
+                    <button 
+                    class="plus"
+                    data-id="${item.id}">
+                    +
+                    </button>
+
+
+                </div>
+
+
+
+                <button
+                class="remove"
+                data-id="${item.id}">
+                
+                ❌ Odstrani
+
+                </button>
 
 
             </div>
 
 
         </div>
+
 
         `;
 
@@ -187,14 +217,153 @@ export function loadCart(){
 
 
     totalElement.textContent =
-    total.toFixed(2) + " €";
+    total.toFixed(2)+" €";
+
+
+
+    cartButtons();
+
+}
+
+
+
+// Gumbi + - odstrani
+
+function cartButtons(){
+
+
+    document.querySelectorAll(".plus")
+    .forEach(button=>{
+
+
+        button.onclick=()=>{
+
+
+            changeQuantity(
+                button.dataset.id,
+                1
+            );
+
+
+        };
+
+
+    });
+
+
+
+    document.querySelectorAll(".minus")
+    .forEach(button=>{
+
+
+        button.onclick=()=>{
+
+
+            changeQuantity(
+                button.dataset.id,
+                -1
+            );
+
+
+        };
+
+
+    });
+
+
+
+    document.querySelectorAll(".remove")
+    .forEach(button=>{
+
+
+        button.onclick=()=>{
+
+
+            removeItem(
+                button.dataset.id
+            );
+
+
+        };
+
+
+    });
 
 
 }
 
 
 
-// Zaženi števec
+// Sprememba količine
+
+function changeQuantity(id,change){
+
+
+    let cart=getCart();
+
+
+    const item =
+    cart.find(
+        product=>product.id===id
+    );
+
+
+    if(item){
+
+
+        item.quantity += change;
+
+
+        if(item.quantity <=0){
+
+            cart =
+            cart.filter(
+                product=>product.id!==id
+            );
+
+        }
+
+    }
+
+
+    saveCart(cart);
+
+
+    loadCart();
+
+    updateCartCount();
+
+}
+
+
+
+// Odstrani izdelek
+
+function removeItem(id){
+
+
+    let cart=getCart();
+
+
+    cart =
+    cart.filter(
+        item=>item.id!==id
+    );
+
+
+    saveCart(cart);
+
+
+    loadCart();
+
+    updateCartCount();
+
+}
+
+
+
+// Ko se stran odpre
+
+loadCart();
 
 updateCartCount();
-loadCart();
