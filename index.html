@@ -1,436 +1,156 @@
 <!DOCTYPE html>
 <html lang="sl">
-
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gelaterija Brstowc</title>
 
-<title>Gelaterija Brstowc</title>
+    <meta name="description" content="Gelaterija Brstowc - domači sladoledi">
 
-<link rel="icon" type="image/png" href="images/gelaterija.png">
+    <link rel="icon" type="image/png" href="images/gelaterija.png">
 
-<meta name="description"
-content="Gelaterija Brstowc - domači sladoledi">
+    <link rel="stylesheet" href="css/style.css">
 
-<link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link rel="preconnect"
-href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
-<link rel="preconnect"
-href="https://fonts.gstatic.com"
-crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
-rel="stylesheet">
-
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 </head>
 
 <body>
 
 <header>
 
-<nav class="navbar">
+    <nav class="navbar">
 
-<h2 class="logo">
+        <a href="index.html" class="logo">
+            🍦 Gelaterija Brstowc
+        </a>
 
-🍦 Gelaterija Brstowc
+        <ul class="nav-links">
 
-</h2>
+            <li>
+                <a href="index.html">Domov</a>
+            </li>
 
-<ul class="nav-links">
+            <li>
+                <a href="okusi.html">Okusi</a>
+            </li>
 
-<li><a href="#domov">Domov</a></li>
+            <li>
+                <a href="kosarica.html">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    Košarica
+                </a>
+            </li>
 
-<li><a href="#okusi">Okusi</a></li>
+            <li>
+                <a href="racun.html">
+                    <i class="fa-solid fa-user"></i>
+                    Moj račun
+                </a>
+            </li>
 
-<li><a href="#cenik">Cenik</a></li>
+        </ul>
 
-<li><a href="#galerija">Galerija</a></li>
+        <div class="nav-buttons">
 
-<li><a href="#kontakt">Kontakt</a></li>
+            <button id="darkMode" title="Temni način">
+                🌙
+            </button>
 
-</ul>
+            <button class="hamburger">
+                <i class="fa-solid fa-bars"></i>
+            </button>
 
-<div class="hamburger">
+        </div>
 
-<i class="fas fa-bars"></i>
-
-</div>
-
-<div class="buttons">
-
-<button id="darkMode">
-🌙
-</button>
-
-</div>
-
-</nav>
-
-<section
-class="hero"
-id="domov">
-
-<div class="hero-text">
-
-<h1>
-
-Naravni domači sladoledi
-
-</h1>
-
-<p>
-
-Osveži se z najboljšimi okusi
-v Gelateriji Brstowc.
-
-Pripravljeni iz kakovostnih sestavin.
-
-
-</p>
-
-<div class="hero-buttons">
-
-<a
-href="#okusi"
-class="btn">
-
-Naši okusi
-
-</a>
-
-<a
-href="#kontakt"
-class="btn-outline">
-
-Kontakt
-
-</a>
-
-</div>
-
-</div>
-
-<div class="hero-image">
-
-<img
-src="images/gelaterija.png"
-alt="Gelaterija Brstowc">
-
-</div>
-
-</section>
+    </nav>
 
 </header>
 
+<main>
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <h1>
+            Dobrodošli v Gelateriji Brstowc 🍦
+        </h1>
+
+        <p>
+
+            Domači sladoledi iz kakovostnih sestavin,
+            pripravljeni z ljubeznijo in veliko dobre volje.
+
+        </p>
+
+        <div class="hero-buttons">
+
+            <a href="okusi.html" class="btn">
+
+                Poglej okuse
+
+            </a>
+
+            <a href="okusi.html" class="btn-outline">
+
+                Naroči zdaj
+
+            </a>
+
+        </div>
+
+    </div>
+
+    <div class="hero-image">
+
+        <img
+            src="images/gelaterija.png"
+            alt="Gelaterija Brstowc">
+
+    </div>
+
+</section>
+
 <section class="about">
 
-<div class="container">
+    <div class="container">
 
-<h2>
+        <h2>Zakaj izbrati nas?</h2>
 
-Dobrodošli!
+        <p>
 
-</h2>
+            V naši gelateriji pripravljamo domače sladolede,
+            sadne sorbete in posebne sezonske okuse.
 
-<p>
+            Naš cilj je ponuditi kakovost, svežino in odličen okus
+            za vsakega obiskovalca.
 
-Pri nas vas čakajo okusni domači sladoledi,
-pripravljeni z ljubeznijo in kakovostnimi sestavinami.
-
-Izbirate lahko med klasičnimi in sadnimi okusi.
-
-</p>
-
-</div>
-
-</section>
-
-    <!-- ================== OKUSI ================== -->
-
-<section id="okusi" class="flavors">
-
-    <h2>Naši sladoledi</h2>
-
-    <div class="cards">
-
-        <div class="card">
-
-            <img src="images/sladoled_jagoda.png" alt="Jagodni sladoled">
-
-            <h3>🍓 Jagodni</h3>
-
-            <p>Svež in osvežilen okus pravih jagod.</p>
-
-            <button>Več informacij</button>
-
-        </div>
-
-        <div class="card">
-
-            <img src="images/sladoled_cokolada.png" alt="Čokoladni sladoled">
-
-            <h3>🍫 Čokoladni</h3>
-
-            <p>Bogat čokoladni okus za ljubitelje čokolade.</p>
-
-            <button>Več informacij</button>
-
-        </div>
-
-        <div class="card">
-
-            <img src="images/sladoled_vanilija.png" alt="Vaniljin sladoled">
-
-            <h3>🍦 Vaniljin</h3>
-
-            <p>Klasična vanilija z nežnim okusom.</p>
-
-            <button>Več informacij</button>
-
-        </div>
-
-        <div class="card">
-
-            <img src="images/sladoled_breskev.png" alt="Sladoled breskev">
-
-            <h3>🍑 Breskev</h3>
-
-            <p>Sadni okus zrelih breskev.</p>
-
-            <button>Več informacij</button>
-
-        </div>
-
-        <div class="card">
-
-            <img src="images/sladoled_marelica.png" alt="Marelični sladoled">
-
-            <h3>🍊 Marelični</h3>
-
-            <p>Nežen in sladek okus marelic.</p>
-
-            <button>Več informacij</button>
-
-        </div>
-
-        <div class="card">
-
-            <img src="images/sladoled_otroska_jagoda.png" alt="Otroška jagoda">
-
-            <h3>🍓 Otroška jagoda</h3>
-
-            <p>Najljubši okus naših najmlajših obiskovalcev.</p>
-
-            <button>Več informacij</button>
-
-        </div>
+        </p>
 
     </div>
 
 </section>
 
-<!-- ================== CENIK ================== -->
+<section class="popular">
 
-<section id="cenik" class="pricing">
+    <h2>Najbolj priljubljeni okusi</h2>
 
-    <h2>Cenik</h2>
+    <p>
 
-    <div class="price-container">
+        Kmalu bodo tukaj prikazani najbolj priljubljeni okusi
+        neposredno iz Firebase.
 
-        <div class="price-card">
-
-            <h3>0,5L</h3>
-
-            <span>2,50 €</span>
-
-        </div>
-
-        <div class="price-card">
-
-            <h3>1L</h3>
-
-            <span>5 €</span>
-
-        </div>
-
-        <div class="price-card">
-
-            <h3>5L</h3>
-
-            <span>20,00 €</span>
-
-        </div>
-
-        <div class="price-card">
-
-            <h3>Družinski člani</h3>
-
-            <span>0 €</span>
-
-        </div>
-
-    </div>
+    </p>
 
 </section>
 
-    <!-- ================== GALERIJA ================== -->
-
-<section id="galerija" class="gallery">
-
-    <h2>Galerija</h2>
-
-    <div class="gallery-grid">
-
-        <img src="images/sladoled_jagoda.png" alt="Jagodni sladoled">
-
-        <img src="images/sladoled_cokolada.png" alt="Čokoladni sladoled">
-
-        <img src="images/sladoled_vanilija.png" alt="Vaniljin sladoled">
-
-        <img src="images/sladoled_breskev.png" alt="Sladoled breskev">
-
-        <img src="images/sladoled_marelica.png" alt="Marelični sladoled">
-
-        <img src="images/sladoled_otroska_jagoda.png" alt="Otroška jagoda">
-
-    </div>
-
-</section>
-
-<!-- ================== KONTAKT ================== -->
-
-<section id="kontakt" class="contact">
-
-    <h2>Kontakt</h2>
-
-    <div class="contact-box">
-
-        <div class="contact-info">
-
-            <h3>Gelaterija Brstowc</h3>
-
-            <p>📧 gelaterijabrstowc@gmail.com</p>
-
-            <p>🕒 Delovni čas: Kdr imam čas 😄</p>
-
-        </div>
-
-<form id="contact-form">
-
-<input
-type="text"
-name="ime"
-placeholder="Vaše ime"
-required>
-
-<input
-type="email"
-name="email"
-placeholder="Vaš e-poštni naslov"
-required>
-
-<textarea
-name="sporocilo"
-rows="6"
-placeholder="Vaše sporočilo"
-required></textarea>
-
-<button type="submit">
-Pošlji
-</button>
-
-</form>
-
-    </div>
-
-</section>
-
-<!-- ================== ZEMLJEVID ================== -->
-
-<section class="map">
-
-    <h2>Kje nas najdete?</h2>
-
-    <iframe
-        src="https://www.google.com/maps?q=Slovenia&output=embed"
-        loading="lazy"
-        allowfullscreen>
-    </iframe>
-
-</section>
-
-<!-- ================== WHATSAPP ================== -->
-
-<a class="whatsapp"
-   href="https://wa.me/"
-   target="_blank"
-   aria-label="WhatsApp">
-
-    <i class="fab fa-whatsapp"></i>
-
-</a>
-
-    <!-- ================== MNENJA ================== -->
-
-<section id="mnenja" class="reviews">
-
-    <h2>Kaj pravijo obiskovalci?</h2>
-
-<p class="reviews-subtitle">
-    Pustite svoje mnenje o Gelateriji Brstowc 🍦
-</p>
-
-<div id="averageRating"></div>
-
-<div class="review-form">
-
-        <input
-            type="text"
-            id="reviewName"
-            placeholder="Vaše ime"
-            maxlength="40"
-            required>
-
-        <div class="stars">
-
-            <span class="star" data-value="1">★</span>
-            <span class="star" data-value="2">★</span>
-            <span class="star" data-value="3">★</span>
-            <span class="star" data-value="4">★</span>
-            <span class="star" data-value="5">★</span>
-
-        </div>
-
-        <textarea
-            id="reviewText"
-            rows="5"
-            placeholder="Napišite svoje mnenje..."
-            maxlength="400"
-            required></textarea>
-
-        <button id="sendReview">
-            ⭐ Objavi mnenje
-        </button>
-
-    </div>
-
-    <hr>
-
-    <div id="reviewsContainer">
-
-        <!-- Tukaj se bodo samodejno prikazovala mnenja -->
-
-    </div>
-
-</section>
-
-<!-- ================== FOOTER ================== -->
+</main>
 
 <footer>
 
@@ -440,19 +160,16 @@ Pošlji
 
     <p>© 2026 Gelaterija Brstowc</p>
 
-    <p>To je učni projekt, izdelan za vajo izdelave spletnih strani. Gelaterija Brstowc ni dejansko podjetje.</p>
+    <p>
+
+        To je učni projekt, izdelan za učenje HTML, CSS,
+        JavaScript in Firebase.
+
+    </p>
 
 </footer>
 
-<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-
-<script>
-emailjs.init({
-    publicKey: "yC7t2fkEwCiPnOCM7",
-});
-</script>
-
-<script type="module" src="script.js"></script>
+<script type="module" src="js/navbar.js"></script>
 
 </body>
 </html>
