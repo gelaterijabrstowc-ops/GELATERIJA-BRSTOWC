@@ -17,6 +17,8 @@ const userPanel = document.getElementById("userPanel");
 const userName = document.getElementById("userName");
 const userEmail = document.getElementById("userEmail");
 
+const logoutButton = document.getElementById("logoutButton");
+
 onAuthStateChanged(auth, async (user) => {
 
     if (user) {
@@ -54,3 +56,18 @@ onAuthStateChanged(auth, async (user) => {
     }
 
 });
+
+import {
+    signOut
+} from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
+
+
+if(logoutButton){
+
+    logoutButton.addEventListener("click",()=>{
+
+        signOut(auth);
+
+    });
+
+}
