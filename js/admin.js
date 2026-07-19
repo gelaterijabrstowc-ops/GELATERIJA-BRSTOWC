@@ -14,9 +14,6 @@ import {
     getDoc
 } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
 
-import { db } from "./firebase.js";
-
-
 import {
     collection,
     getDocs,
