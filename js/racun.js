@@ -80,3 +80,69 @@ if(logoutButton){
     });
 
 }
+
+async function loadOrders(user){
+
+    const container =
+    document.getElementById("ordersContainer");
+
+
+    if(!container) return;
+
+
+    const q = query(
+        collection(db, "orders"),
+        where("userId", "==", user.uid)
+    );
+
+
+    const snapshot =
+    await getDocs(q);
+
+
+    container.innerHTML = "";
+
+
+    if(snapshot.empty){
+
+        container.innerHTML =
+        "<p>Še nimaš naročil.</p>";
+
+        return;
+
+    }
+
+
+    snapshot.forEach((doc)=>{
+
+        const order = doc.data();
+
+
+        container.innerHTML += `
+
+        <div class="order-card">
+
+            <h3>
+            Naročilo
+            </h3>
+
+            <p>
+            Skupaj:
+            ${order.total.toFixed(2)} €
+            </p>
+
+            <p>
+            Izdelki:
+            ${order.products.map(
+                item =>
+                item.name + " x" + item.quantity
+            ).join(", ")}
+            </p>
+
+        </div>
+
+        `;
+
+    });
+
+}
