@@ -283,3 +283,9 @@ if (addFlavorForm) {
     });
 
 }
+
+const imageName =
+document.getElementById("flavorImage").value.trim();
+
+const imageUrl =
+"images/" + imageName;
