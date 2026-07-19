@@ -162,6 +162,43 @@ async function loadOrders(){
 
 }
 
+onAuthStateChanged(auth, async (user)=>{
 
 
-loadOrders();
+    if(!user){
+
+        alert("Dostop zavrnjen.");
+
+        window.location.href="racun.html";
+
+        return;
+
+    }
+
+
+
+    const userDoc = await getDoc(
+        doc(db,"users",user.uid)
+    );
+
+
+
+    if(
+        !userDoc.exists() ||
+        userDoc.data().role !== "admin"
+    ){
+
+        alert("Nimaš dovoljenja za admin stran.");
+
+        window.location.href="index.html";
+
+        return;
+
+    }
+
+
+
+    loadOrders();
+
+
+});
