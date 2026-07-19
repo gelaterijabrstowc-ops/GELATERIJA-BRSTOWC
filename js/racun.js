@@ -21,6 +21,8 @@ const logoutButton = document.getElementById("logoutButton");
 
 onAuthStateChanged(auth, async (user) => {
 
+    console.log(user);
+
     if (user) {
 
         if (loginBox) loginBox.style.display = "none";
