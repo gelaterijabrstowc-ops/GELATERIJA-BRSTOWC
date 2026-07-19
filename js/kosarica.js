@@ -197,3 +197,4 @@ export function loadCart(){
 // Zaženi števec
 
 updateCartCount();
+loadCart();
