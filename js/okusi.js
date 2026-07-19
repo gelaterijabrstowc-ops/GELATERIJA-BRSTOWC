@@ -3,6 +3,8 @@
 // OKUSI - FIRESTORE
 // ==========================================
 
+import { addToCart } from "./kosarica.js";
+
 import { db } from "./firebase.js";
 
 import {
@@ -113,7 +115,37 @@ async function loadProducts() {
 
 
 
-        addCartEvents();
+        function addCartEvents(){
+
+    const buttons =
+    document.querySelectorAll(".add-cart");
+
+
+    buttons.forEach(button=>{
+
+
+        button.addEventListener("click",()=>{
+
+
+            const id =
+            button.dataset.id;
+
+
+            const product =
+            products.find(
+                p => p.id === id
+            );
+
+
+            addToCart(product);
+
+
+        });
+
+
+    });
+
+}
 
 
 
